@@ -1,3 +1,7 @@
+import { registerSW } from "virtual:pwa-register";
+
+registerSW({ immediate: true });
+
 const accents = ["#00F0FF", "#FF00C8", "#F5FF00", "#FF6A00"];
 const root = document.documentElement;
 let accentIndex = 0;
