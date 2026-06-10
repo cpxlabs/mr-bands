@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MR. BANDS — Arte Geométrica 3D</title>
+    <meta
+      name="description"
+      content="Portfólio de MR. BANDS, artista visual de arte geométrica 3D com obras vibrantes e encomendas exclusivas."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="bg-particles" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Navegação principal">
+        <a class="logo" href="#hero">MR. BANDS</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu-list">
+          <span></span><span></span><span></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+        <ul id="menu-list" class="menu-list">
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#obras">Obras</a></li>
+          <li><a href="#encomendas">Encomendas</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero section">
+        <div class="hero-geometry" aria-hidden="true">
+          <div class="ring ring-a"></div>
+          <div class="ring ring-b"></div>
+          <div class="ring ring-c"></div>
+        </div>
+        <div class="hero-content container reveal">
+          <p class="kicker">Portfólio de Arte Visual</p>
+          <h1 class="glitch" data-text="MR. BANDS">MR. BANDS</h1>
+          <p class="tagline">Arte Geométrica 3D — Cor, Forma e Dimensão.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#obras">Ver Obras</a>
+            <a class="btn btn-outline" href="#encomendas">Encomendar</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" class="section about">
+        <div class="container about-grid reveal">
+          <div class="artist-photo" role="img" aria-label="Retrato estilizado do artista MR. BANDS"></div>
+          <div class="about-copy">
+            <h2>SOBRE MIM</h2>
+            <p>
+              Minha pesquisa parte da geometria como linguagem emocional. Cada plano, volume e eixo cria
+              uma sensação precisa — tensão, ritmo e silêncio visual em equilíbrio.
+            </p>
+            <p>
+              Trabalho com teoria da cor para construir profundidade em camadas. Tons neon e contrastes
+              extremos guiam o olhar dentro da composição tridimensional.
+            </p>
+            <p>
+              Minhas influências atravessam a arte óptica, o design brutalista e a cultura digital,
+              transformando estruturas matemáticas em peças únicas e pulsantes.
+            </p>
+          </div>
+        </div>
+        <div class="ticker" aria-hidden="true">
+          <div>
+            GEOMETRIA · COR · DIMENSÃO · FORMA · ARTE · ORIGINALIDADE · GEOMETRIA · COR · DIMENSÃO ·
+            FORMA · ARTE · ORIGINALIDADE ·
+          </div>
+        </div>
+      </section>
+
+      <section id="obras" class="section gallery">
+        <div class="container reveal">
+          <h2 class="section-title">OBRAS DISPONÍVEIS</h2>
+          <div class="filters" role="radiogroup" aria-label="Filtrar por categoria">
+            <button class="filter is-active" data-filter="all" role="radio" aria-checked="true">Todas</button>
+            <button class="filter" data-filter="impressoes" role="radio" aria-checked="false">Impressões</button>
+            <button class="filter" data-filter="originais" role="radio" aria-checked="false">Originais</button>
+            <button class="filter" data-filter="esculturas" role="radio" aria-checked="false">Esculturas</button>
+          </div>
+          <div class="art-grid">
+            <article class="card" data-category="originais">
+              <div class="art art-1"></div>
+              <h3>Prisma Vivo I</h3>
+              <p>Acrílica sobre painel · 80x80 cm</p>
+              <strong>R$ 4.800</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+            <article class="card" data-category="impressoes">
+              <div class="art art-2"></div>
+              <h3>Vetor Pulsante</h3>
+              <p>Fine Art Print · 60x90 cm</p>
+              <strong>R$ 1.200</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+            <article class="card" data-category="esculturas">
+              <div class="art art-3"></div>
+              <h3>Nó Hexagonal</h3>
+              <p>Resina pigmentada · 45 cm</p>
+              <strong>R$ 6.300</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+            <article class="card" data-category="originais">
+              <div class="art art-4"></div>
+              <h3>Campo Fractal</h3>
+              <p>Mixed media · 100x70 cm</p>
+              <strong>R$ 5.100</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+            <article class="card" data-category="impressoes">
+              <div class="art art-5"></div>
+              <h3>Ponto de Fuga 3D</h3>
+              <p>Giclée · 50x70 cm</p>
+              <strong>R$ 980</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+            <article class="card" data-category="esculturas">
+              <div class="art art-6"></div>
+              <h3>Órbita Angular</h3>
+              <p>Metal + acrílico · 55 cm</p>
+              <strong>R$ 7.400</strong>
+              <a href="#contato" class="details">Ver Detalhes</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="encomendas" class="section orders">
+        <div class="container reveal">
+          <h2>ENCOMENDAR UMA OBRA EXCLUSIVA</h2>
+          <div class="orders-grid">
+            <div class="steps">
+              <article>
+                <span class="icon triangle" aria-hidden="true"></span>
+                <h3>Consulta</h3>
+                <p>Conversamos sobre conceito, ambiente, paleta e intenção da peça.</p>
+              </article>
+              <article>
+                <span class="icon hex" aria-hidden="true"></span>
+                <h3>Proposta</h3>
+                <p>Você recebe estudo visual, dimensões, materiais e orçamento detalhado.</p>
+              </article>
+              <article>
+                <span class="icon diamond" aria-hidden="true"></span>
+                <h3>Criação</h3>
+                <p>Produção autoral com acompanhamento de etapas até a entrega final.</p>
+              </article>
+            </div>
+            <form class="order-form" action="#" method="post">
+              <label>
+                Nome
+                <input type="text" name="nome" required />
+              </label>
+              <label>
+                E-mail
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Tipo de obra desejada
+                <input type="text" name="tipo" required />
+              </label>
+              <label>
+                Dimensões aproximadas
+                <input type="text" name="dimensoes" />
+              </label>
+              <label>
+                Orçamento estimado
+                <input type="text" name="orcamento" />
+              </label>
+              <label>
+                Mensagem
+                <textarea name="mensagem" rows="4" required></textarea>
+              </label>
+              <button type="submit" class="btn btn-primary">ENVIAR ENCOMENDA</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contato" class="section footer">
+      <div class="watermark" aria-hidden="true"></div>
+      <div class="container reveal">
+        <h2>MR. BANDS</h2>
+        <p>São Paulo, Brasil · contato@mrbands.art</p>
+        <ul class="socials">
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="WhatsApp">WhatsApp</a></li>
+          <li><a href="#" aria-label="Behance">Behance</a></li>
+        </ul>
+        <small>© <span id="year"></span> MR. BANDS. Todos os direitos reservados.</small>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
