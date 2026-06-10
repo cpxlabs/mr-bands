@@ -106,7 +106,7 @@ export default function Encomendas() {
                 className="border p-3 text-sm font-mono"
                 style={{ borderColor: accent, color: accent }}
               >
-                ✓ Encomenda enviada! Entraremos em contacto em breve.
+                ✓ Encomenda enviada! Entraremos em contato em breve.
               </div>
             )}
 
