@@ -9,6 +9,8 @@ Site de portfólio para **MR. BANDS**, artista visual especializado em arte geom
 | Recurso | Detalhe |
 |---|---|
 | Linguagem | HTML · CSS · JavaScript (vanilla) |
+| Build tool | Vite |
+| PWA | Service Worker + Web App Manifest (vite-plugin-pwa) |
 | Fontes | Inter · Space Grotesk · JetBrains Mono (Google Fonts) |
 | Animações | CSS keyframes + Canvas 2D API |
 | Responsividade | Breakpoints em 920 px e 720 px |
@@ -20,9 +22,14 @@ Site de portfólio para **MR. BANDS**, artista visual especializado em arte geom
 
 ```
 mr-bands/
+├── public/
+│   ├── pwa-192.svg # Ícone do app (manifest)
+│   └── pwa-512.svg # Ícone do app (manifest)
 ├── index.html   # Estrutura e conteúdo da página
 ├── styles.css   # Estilização completa (variáveis, layout, animações, media queries)
 ├── script.js    # Interatividade (partículas, filtros, nav ativa, menu mobile)
+├── vite.config.js # Configuração do Vite e PWA
+├── package.json
 └── README.md
 ```
 
@@ -63,16 +70,23 @@ Localização, e-mail e links para redes sociais (Instagram, WhatsApp, Behance).
 
 ## Como Executar
 
-Não há dependências ou etapas de build. Basta abrir o arquivo `index.html` em qualquer navegador moderno:
+Use Vite para desenvolvimento local e build de produção:
 
 ```bash
-# Opção 1 — abrir diretamente
-open index.html
-
-# Opção 2 — servidor local simples (Python 3)
-python3 -m http.server 8080
-# acesse http://localhost:8080
+npm install
+npm run dev
 ```
+
+Acesse o endereço exibido no terminal (normalmente `http://localhost:5173`).
+
+### Build de produção
+
+```bash
+npm run build
+npm run preview
+```
+
+O app está configurado como PWA e registra Service Worker automaticamente.
 
 ---
 
