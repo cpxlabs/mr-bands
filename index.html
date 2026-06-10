@@ -83,11 +83,11 @@
       <section id="obras" class="section gallery">
         <div class="container reveal">
           <h2 class="section-title">OBRAS DISPONÍVEIS</h2>
-          <div class="filters" role="tablist" aria-label="Filtrar por categoria">
-            <button class="filter is-active" data-filter="all">Todas</button>
-            <button class="filter" data-filter="impressoes">Impressões</button>
-            <button class="filter" data-filter="originais">Originais</button>
-            <button class="filter" data-filter="esculturas">Esculturas</button>
+          <div class="filters" role="radiogroup" aria-label="Filtrar por categoria">
+            <button class="filter is-active" data-filter="all" role="radio" aria-checked="true">Todas</button>
+            <button class="filter" data-filter="impressoes" role="radio" aria-checked="false">Impressões</button>
+            <button class="filter" data-filter="originais" role="radio" aria-checked="false">Originais</button>
+            <button class="filter" data-filter="esculturas" role="radio" aria-checked="false">Esculturas</button>
           </div>
           <div class="art-grid">
             <article class="card" data-category="originais">

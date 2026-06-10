@@ -1,11 +1,15 @@
 const accents = ["#00F0FF", "#FF00C8", "#F5FF00", "#FF6A00"];
 const root = document.documentElement;
 let accentIndex = 0;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const reducedMotion = reducedMotionQuery.matches;
 
-setInterval(() => {
-  accentIndex = (accentIndex + 1) % accents.length;
-  root.style.setProperty("--accent", accents[accentIndex]);
-}, 3500);
+if (!reducedMotion) {
+  setInterval(() => {
+    accentIndex = (accentIndex + 1) % accents.length;
+    root.style.setProperty("--accent", accents[accentIndex]);
+  }, 3500);
+}
 
 const sections = [...document.querySelectorAll("main section, footer")];
 const navLinks = [...document.querySelectorAll(".menu-list a")];
@@ -41,6 +45,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const menuList = document.querySelector(".menu-list");
 
 menuToggle?.addEventListener("click", () => {
+  if (!menuList) return;
   const isOpen = menuList.classList.toggle("open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
@@ -57,8 +62,12 @@ const cards = [...document.querySelectorAll(".card")];
 
 filters.forEach((filterBtn) => {
   filterBtn.addEventListener("click", () => {
-    filters.forEach((btn) => btn.classList.remove("is-active"));
+    filters.forEach((btn) => {
+      btn.classList.remove("is-active");
+      btn.setAttribute("aria-checked", "false");
+    });
     filterBtn.classList.add("is-active");
+    filterBtn.setAttribute("aria-checked", "true");
     const selected = filterBtn.dataset.filter;
 
     cards.forEach((card) => {
@@ -70,9 +79,14 @@ filters.forEach((filterBtn) => {
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
+const orderForm = document.querySelector(".order-form");
+orderForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  orderForm.reset();
+});
+
 const canvas = document.getElementById("bg-particles");
 const ctx = canvas?.getContext("2d");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const dots = [];
 
 if (canvas && ctx) {
