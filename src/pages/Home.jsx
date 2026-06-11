@@ -8,7 +8,7 @@ export default function Home() {
   const revealRef = useReveal();
 
   return (
-    <section className="relative min-h-[calc(100vh-72px)] grid place-items-center overflow-hidden py-24">
+    <section className="page-fade relative min-h-[calc(100vh-72px)] grid place-items-center overflow-hidden py-24">
       {/* Animated geometric rings */}
       <div
         aria-hidden="true"
@@ -64,7 +64,7 @@ export default function Home() {
         <div className="flex justify-center gap-4 flex-wrap">
           <Link
             to="/obras"
-            className="inline-block px-5 py-3 uppercase tracking-[0.08em] text-sm font-bold transition-all duration-200 hover:shadow-lg"
+            className="inline-block px-5 py-3 uppercase tracking-[0.08em] text-sm font-bold transition-all duration-200 hover:shadow-lg focus-ring"
             style={{
               background: `linear-gradient(120deg, ${accent}, ${accent}cc)`,
               color: "#111",
@@ -75,7 +75,7 @@ export default function Home() {
           </Link>
           <Link
             to="/encomendas"
-            className="inline-block px-5 py-3 uppercase tracking-[0.08em] text-sm border border-[#222] transition-all duration-200 hover:border-current"
+            className="inline-block px-5 py-3 uppercase tracking-[0.08em] text-sm border border-[#222] transition-all duration-200 focus-ring"
             style={{ color: "#f7f7f7" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = accent;
@@ -89,6 +89,18 @@ export default function Home() {
             Encomendar
           </Link>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50"
+        style={{ animation: "scroll-bounce 1.6s ease-in-out infinite" }}
+      >
+        <span className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-[#bcbcbc]">scroll</span>
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1 L8 8 L15 1" stroke="#bcbcbc" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
       </div>
     </section>
   );

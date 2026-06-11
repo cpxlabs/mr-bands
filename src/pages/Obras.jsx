@@ -70,14 +70,23 @@ export default function Obras() {
   );
 
   return (
-    <section className="py-24">
+    <section className="page-fade py-24">
       <div ref={revealRef} className="reveal w-[min(1120px,92vw)] mx-auto">
-        <h2
-          className="font-display text-3xl md:text-4xl tracking-widest inline-block border-b pb-1 mb-6"
-          style={{ color: "#f7f7f7", borderColor: accent }}
-        >
-          Obras Disponíveis
-        </h2>
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-6">
+          <h2
+            className="font-display text-3xl md:text-4xl tracking-widest inline-block border-b pb-1"
+            style={{ color: "#f7f7f7", borderColor: accent }}
+          >
+            Obras Disponíveis
+          </h2>
+          {/* Work count badge */}
+          <span
+            className="font-mono text-xs uppercase tracking-widest px-3 py-1 border"
+            style={{ borderColor: accent, color: accent }}
+          >
+            {visible.length} {visible.length === 1 ? "obra" : "obras"}
+          </span>
+        </div>
 
         {/* Filter bar */}
         <div
@@ -91,7 +100,7 @@ export default function Obras() {
               role="radio"
               aria-checked={galleryFilter === id}
               onClick={() => dispatch({ type: "SET_FILTER", payload: id })}
-              className="border px-3 py-2 uppercase font-mono text-xs tracking-widest cursor-pointer transition-all duration-200"
+              className="border px-3 py-2 uppercase font-mono text-xs tracking-widest cursor-pointer transition-all duration-200 focus-ring"
               style={
                 galleryFilter === id
                   ? { borderColor: accent, color: accent }
@@ -131,6 +140,13 @@ export default function Obras() {
                       "linear-gradient(130deg, rgba(0,240,255,0.26), rgba(255,0,200,0.2), rgba(245,255,0,0.15))",
                   }}
                 />
+                {/* Category tag */}
+                <span
+                  className="absolute top-2 right-2 font-mono text-[0.6rem] uppercase tracking-widest px-2 py-0.5 bg-[#0a0a0a]/80 border"
+                  style={{ borderColor: "#333", color: "#bcbcbc" }}
+                >
+                  {work.category}
+                </span>
               </div>
 
               <h3 className="font-display text-base tracking-wide">{work.title}</h3>
@@ -139,7 +155,7 @@ export default function Obras() {
 
               <Link
                 to="/encomendas"
-                className="mt-2 text-sm uppercase tracking-widest font-mono opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200"
+                className="mt-2 text-sm uppercase tracking-widest font-mono opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 focus-ring"
                 style={{ color: accent }}
               >
                 Ver Detalhes →

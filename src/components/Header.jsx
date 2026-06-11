@@ -26,10 +26,15 @@ export default function Header() {
       >
         <Link
           to="/"
-          className="font-mono text-[0.92rem] tracking-[0.08em] uppercase transition-colors duration-200"
+          className="flex items-center gap-2 font-mono text-[0.92rem] tracking-[0.08em] uppercase transition-colors duration-200"
           onClick={() => dispatch({ type: "CLOSE_MENU" })}
           style={{ color: accent }}
         >
+          <span
+            aria-hidden="true"
+            className="pulse-dot inline-block w-2 h-2 rounded-full flex-shrink-0"
+            style={{ background: accent }}
+          />
           MR. BANDS
         </Link>
 

@@ -27,6 +27,22 @@ const STEPS = [
   },
 ];
 
+const PRICING = [
+  { label: "Impressão Fine Art", range: "R$ 800 – R$ 2.000" },
+  { label: "Original (acrílica / mixed)", range: "R$ 3.500 – R$ 8.000" },
+  { label: "Escultura geométrica", range: "R$ 5.000 – R$ 12.000" },
+  { label: "Encomenda digital", range: "R$ 400 – R$ 1.200" },
+];
+
+const TIPO_OPTIONS = [
+  "Impressão Fine Art",
+  "Pintura original",
+  "Escultura geométrica",
+  "Arte digital",
+  "Mixed media",
+  "Outro",
+];
+
 const INITIAL_FORM = {
   nome: "",
   email: "",
@@ -56,9 +72,12 @@ export default function Encomendas() {
     setTimeout(() => setSubmitted(false), 4000);
   };
 
+  const inputCls =
+    "w-full border border-[#222] bg-[#0d0d0d] text-[#f7f7f7] px-3 py-2 font-[inherit] focus:outline-none transition-all duration-200";
+
   return (
     <section
-      className="py-24"
+      className="page-fade py-24"
       style={{
         background:
           "linear-gradient(180deg, transparent, #0f0f0f 25%, #0f0f0f 75%, transparent)",
@@ -73,7 +92,7 @@ export default function Encomendas() {
         </h2>
 
         <div className="grid md:grid-cols-[1fr_1.1fr] gap-5">
-          {/* Steps */}
+          {/* Steps + Pricing */}
           <div className="flex flex-col gap-4">
             {STEPS.map(({ shape, title, desc, clipPath, color, rotate }) => (
               <article
@@ -93,6 +112,27 @@ export default function Encomendas() {
                 <p className="text-[#bcbcbc] text-sm m-0">{desc}</p>
               </article>
             ))}
+
+            {/* Pricing reference */}
+            <div className="border border-[#222] p-4 bg-[#121212] mt-2">
+              <h3
+                className="font-display text-xs tracking-[0.18em] uppercase mb-3"
+                style={{ color: accent }}
+              >
+                Referência de Preços
+              </h3>
+              <ul className="flex flex-col gap-2 list-none p-0 m-0">
+                {PRICING.map(({ label, range }) => (
+                  <li key={label} className="flex justify-between items-center gap-2 text-xs font-mono">
+                    <span className="text-[#bcbcbc]">{label}</span>
+                    <span style={{ color: accent }}>{range}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-[#555] text-[0.7rem] font-mono mt-3 leading-relaxed">
+                * Valores variam conforme dimensões, materiais e complexidade.
+              </p>
+            </div>
           </div>
 
           {/* Form */}
@@ -113,9 +153,6 @@ export default function Encomendas() {
             {[
               { name: "nome", label: "Nome", type: "text", required: true },
               { name: "email", label: "E-mail", type: "email", required: true },
-              { name: "tipo", label: "Tipo de obra desejada", type: "text", required: true },
-              { name: "dimensoes", label: "Dimensões aproximadas", type: "text" },
-              { name: "orcamento", label: "Orçamento estimado", type: "text" },
             ].map(({ name, label, type, required }) => (
               <label
                 key={name}
@@ -128,8 +165,53 @@ export default function Encomendas() {
                   required={required}
                   value={form[name]}
                   onChange={handleChange}
-                  className="w-full border border-[#222] bg-[#0d0d0d] text-[#f7f7f7] px-3 py-2 font-[inherit] focus:outline-none transition-all duration-200"
-                  style={{ outline: "none" }}
+                  className={inputCls}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = accent)}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "#222")}
+                />
+              </label>
+            ))}
+
+            {/* Styled select for tipo */}
+            <label className="grid gap-1 text-[0.85rem] uppercase tracking-[0.05em] font-mono">
+              Tipo de obra desejada
+              <select
+                name="tipo"
+                required
+                value={form.tipo}
+                onChange={handleChange}
+                className={inputCls + " cursor-pointer appearance-none"}
+                style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23bcbcbc' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 0.75rem center",
+                  paddingRight: "2.2rem",
+                }}
+                onFocus={(e) => (e.currentTarget.style.borderColor = accent)}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#222")}
+              >
+                <option value="" disabled>Selecione...</option>
+                {TIPO_OPTIONS.map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </label>
+
+            {[
+              { name: "dimensoes", label: "Dimensões aproximadas", type: "text" },
+              { name: "orcamento", label: "Orçamento estimado", type: "text" },
+            ].map(({ name, label, type }) => (
+              <label
+                key={name}
+                className="grid gap-1 text-[0.85rem] uppercase tracking-[0.05em] font-mono"
+              >
+                {label}
+                <input
+                  type={type}
+                  name={name}
+                  value={form[name]}
+                  onChange={handleChange}
+                  className={inputCls}
                   onFocus={(e) => (e.currentTarget.style.borderColor = accent)}
                   onBlur={(e) => (e.currentTarget.style.borderColor = "#222")}
                 />
@@ -144,8 +226,7 @@ export default function Encomendas() {
                 required
                 value={form.mensagem}
                 onChange={handleChange}
-                className="w-full border border-[#222] bg-[#0d0d0d] text-[#f7f7f7] px-3 py-2 font-[inherit] resize-y focus:outline-none"
-                style={{ outline: "none" }}
+                className={inputCls + " resize-y"}
                 onFocus={(e) => (e.currentTarget.style.borderColor = accent)}
                 onBlur={(e) => (e.currentTarget.style.borderColor = "#222")}
               />
@@ -153,7 +234,7 @@ export default function Encomendas() {
 
             <button
               type="submit"
-              className="mt-2 px-5 py-3 uppercase tracking-[0.08em] text-sm font-bold transition-all duration-200"
+              className="mt-2 px-5 py-3 uppercase tracking-[0.08em] text-sm font-bold transition-all duration-200 focus-ring"
               style={{
                 background: `linear-gradient(120deg, ${accent}, ${accent}cc)`,
                 color: "#111",
