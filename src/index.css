@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0a0a;
+  --color-cyan: #00f0ff;
+  --color-magenta: #ff00c8;
+  --color-yellow: #f5ff00;
+  --color-orange: #ff6a00;
+  --color-card: #111111;
+  --color-line: #222222;
+  --color-muted: #bcbcbc;
+
+  --font-sans: Inter, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #0a0a0a;
+    color: #f7f7f7;
+    font-family: Inter, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* Glitch effect */
+  .glitch {
+    position: relative;
+    text-shadow: 0.05em 0 #00f0ff, -0.05em 0 #ff00c8;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .glitch::before {
+    transform: translateX(2px);
+    color: #00f0ff;
+    mix-blend-mode: screen;
+  }
+
+  .glitch::after {
+    transform: translateX(-2px);
+    color: #ff00c8;
+    mix-blend-mode: screen;
+  }
+
+  /* Ticker animation */
+  .ticker-track {
+    animation: slide 20s linear infinite;
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Art card drift */
+  .art-bg {
+    animation: drift 7s ease-in-out infinite alternate;
+    background-size: 160% 160%;
+  }
+
+  @keyframes drift {
+    to {
+      background-position: 100% 100%;
+    }
+  }
+
+  /* Rotating rings */
+  .ring {
+    border: 2px solid transparent;
+    clip-path: polygon(50% 0, 95% 30%, 95% 70%, 50% 100%, 5% 70%, 5% 30%);
+    animation: rotate 16s linear infinite;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Art backgrounds */
+  .art-1 {
+    background-image: linear-gradient(120deg, #141414, #1f1f1f),
+      conic-gradient(from 230deg, #00f0ff, transparent 30%, #ff00c8, transparent 72%, #ff6a00);
+  }
+
+  .art-2 {
+    background-image: linear-gradient(220deg, #121212, #1c1c1c),
+      radial-gradient(circle at 30% 30%, #f5ff00, transparent 42%),
+      linear-gradient(140deg, transparent 40%, #ff00c8);
+  }
+
+  .art-3 {
+    background-image: linear-gradient(180deg, #141414, #212121),
+      repeating-linear-gradient(45deg, transparent 0 12px, rgba(0, 240, 255, 0.5) 12px 14px);
+  }
+
+  .art-4 {
+    background-image: linear-gradient(120deg, #151515, #252525),
+      linear-gradient(30deg, transparent 40%, #ff6a00),
+      linear-gradient(160deg, transparent 30%, #00f0ff);
+  }
+
+  .art-5 {
+    background-image: linear-gradient(120deg, #111, #252525),
+      conic-gradient(from 180deg, #f5ff00, transparent 30%, #ff00c8, transparent 70%, #00f0ff);
+  }
+
+  .art-6 {
+    background-image: linear-gradient(120deg, #151515, #222),
+      linear-gradient(45deg, transparent 35%, #ff6a00),
+      linear-gradient(-45deg, transparent 35%, #ff00c8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
