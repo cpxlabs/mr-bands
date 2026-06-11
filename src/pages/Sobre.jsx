@@ -52,7 +52,7 @@ export default function Sobre() {
               }}
             />
             {/* Decorative label */}
-            <div className="absolute bottom-6 left-6 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[#bcbcbc] opacity-70">
+            <div aria-hidden="true" className="absolute bottom-6 left-6 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[#bcbcbc] opacity-70">
               MR. BANDS · São Paulo
             </div>
           </div>

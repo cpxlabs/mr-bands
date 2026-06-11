@@ -202,8 +202,8 @@
   }
 
   .badge:hover {
-    border-color: var(--color-cyan);
-    color: var(--color-cyan);
+    border-color: var(--badge-accent, var(--color-cyan));
+    color: var(--badge-accent, var(--color-cyan));
   }
 }
 

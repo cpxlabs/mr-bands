@@ -124,6 +124,7 @@ export default function Contato() {
                         <a
                           href="#"
                           className="text-[#bcbcbc] transition-colors font-mono text-sm"
+                          onClick={(e) => e.preventDefault()}
                           onMouseEnter={(e) => (e.currentTarget.style.color = accent)}
                           onMouseLeave={(e) => (e.currentTarget.style.color = "")}
                         >
