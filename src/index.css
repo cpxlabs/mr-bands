@@ -153,6 +153,58 @@
       linear-gradient(45deg, transparent 35%, #ff6a00),
       linear-gradient(-45deg, transparent 35%, #ff00c8);
   }
+
+  /* Focus visible ring */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+
+  /* Pulse dot animation */
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(1.35); }
+  }
+
+  /* Scroll indicator bounce */
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* Page fade-in */
+  .page-fade {
+    animation: page-fade 0.35s ease both;
+  }
+
+  @keyframes page-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Badge pill */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--color-line);
+    padding: 0.3rem 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .badge:hover {
+    border-color: var(--color-cyan);
+    color: var(--color-cyan);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

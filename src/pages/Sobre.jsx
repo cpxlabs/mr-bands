@@ -1,13 +1,29 @@
 import useReveal from "../components/useReveal";
 import { useApp } from "../context/AppContext";
 
+const SKILLS = [
+  { label: "Acrílica sobre painel", shape: "triangle", color: "#00f0ff" },
+  { label: "Resina pigmentada", shape: "hex", color: "#f5ff00" },
+  { label: "Fine Art Print", shape: "diamond", color: "#ff00c8" },
+  { label: "Mixed media", shape: "triangle", color: "#ff6a00" },
+  { label: "Escultura geométrica", shape: "hex", color: "#00f0ff" },
+  { label: "Arte digital", shape: "diamond", color: "#f5ff00" },
+];
+
+const SHAPE_CLIP = {
+  triangle: "polygon(50% 0, 100% 100%, 0 100%)",
+  hex: "polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%)",
+  diamond: "polygon(50% 0, 100% 50%, 50% 100%, 0 50%)",
+};
+
 export default function Sobre() {
   const revealRef = useReveal();
+  const skillsRef = useReveal();
   const { state } = useApp();
   const { accent } = state;
 
   return (
-    <section className="py-24 relative">
+    <section className="page-fade py-24 relative">
       <div ref={revealRef} className="reveal w-[min(1120px,92vw)] mx-auto">
         <div className="grid md:grid-cols-[0.95fr_1.05fr] gap-8 items-center">
           {/* Stylised artist portrait */}
@@ -35,6 +51,10 @@ export default function Sobre() {
                 mixBlendMode: "screen",
               }}
             />
+            {/* Decorative label */}
+            <div className="absolute bottom-6 left-6 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-[#bcbcbc] opacity-70">
+              MR. BANDS · São Paulo
+            </div>
           </div>
 
           {/* Copy */}
@@ -75,6 +95,40 @@ export default function Sobre() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Skills & Mediums */}
+        <div ref={skillsRef} className="reveal mt-16">
+          <h3
+            className="font-display text-sm tracking-[0.2em] uppercase mb-5 inline-block border-b pb-1"
+            style={{ color: accent, borderColor: accent }}
+          >
+            Técnicas &amp; Materiais
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {SKILLS.map(({ label, shape, color }) => (
+              <span
+                key={label}
+                className="badge"
+                style={{ "--badge-accent": color }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = color;
+                  e.currentTarget.style.color = color;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.color = "";
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-3 h-3 flex-shrink-0"
+                  style={{ background: color, clipPath: SHAPE_CLIP[shape] }}
+                />
+                {label}
+              </span>
+            ))}
           </div>
         </div>
       </div>
